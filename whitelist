@@ -19,7 +19,7 @@ return function(scriptKey)
     setclipboard(clientId)
 
     -- URL for the JSON file containing key statuses
-    local jsonUrl = 'https://raw.githubusercontent.com/TheGreatSageThatEqualToHeaven/testtt/main/keys.json'
+    local jsonUrl = 'https://raw.githubusercontent.com/randomprojectss/whitelistttt/refs/heads/main/keys.json'
 
     -- Function to send a message to the Discord webhook
     local function sendWebhookMessage(content)
