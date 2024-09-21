@@ -19,7 +19,7 @@ return function(scriptKey)
     setclipboard(clientId)
 
     -- URL for the JSON file containing key statuses
-    local jsonUrl = 'https://github.com/randomprojectss/whitelistttt/blob/main/keys.json'
+    local jsonUrl = 'https://raw.githubusercontent.com/TheGreatSageThatEqualToHeaven/testtt/main/keys.json'
 
     -- Function to send a message to the Discord webhook
     local function sendWebhookMessage(content)
@@ -126,7 +126,7 @@ return function(scriptKey)
         showNotification("Success", "You are whitelisted!")
 
         -- Fetch and execute the external script
-        local scriptUrl = 'https://pastebin.com/raw/xiVHqhkb'
+        local scriptUrl = 'https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'
         local scriptContent = game:HttpGet(scriptUrl)
 
         -- Safely execute the script
