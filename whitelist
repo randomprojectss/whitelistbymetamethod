@@ -1,189 +1,149 @@
---[[
- .____                  ________ ___.    _____                           __                
- |    |    __ _______   \_____  \\_ |___/ ____\_ __  ______ ____ _____ _/  |_  ___________ 
- |    |   |  |  \__  \   /   |   \| __ \   __\  |  \/  ___// ___\\__  \\   __\/  _ \_  __ \
- |    |___|  |  // __ \_/    |    \ \_\ \  | |  |  /\___ \\  \___ / __ \|  | (  <_> )  | \/
- |_______ \____/(____  /\_______  /___  /__| |____//____  >\___  >____  /__|  \____/|__|   
-         \/          \/         \/    \/                \/     \/     \/                   
-          \_Welcome to LuaObfuscator.com   (Alpha 0.10.7) ~  Much Love, Ferib 
-
-]]--
-
-local obf_stringchar = string.char;
-local obf_stringbyte = string.byte;
-local obf_stringsub = string.sub;
-local obf_bitlib = bit32 or bit;
-local obf_XOR = obf_bitlib.bxor;
-local obf_tableconcat = table.concat;
-local obf_tableinsert = table.insert;
-local function LUAOBFUSACTOR_DECRYPT_STR_0(LUAOBFUSACTOR_STR, LUAOBFUSACTOR_KEY)
-	local result = {};
-	for i = 1, #LUAOBFUSACTOR_STR do
-		obf_tableinsert(result, obf_stringchar(obf_XOR(obf_stringbyte(obf_stringsub(LUAOBFUSACTOR_STR, i, i + 1)), obf_stringbyte(obf_stringsub(LUAOBFUSACTOR_KEY, 1 + (i % #LUAOBFUSACTOR_KEY), 1 + (i % #LUAOBFUSACTOR_KEY) + 1))) % 256));
-	end
-	return obf_tableconcat(result);
-end
-local obf_bitlib = bit32 or bit;
-local obf_XOR = obf_bitlib.bxor;
-local obf_OR = obf_bitlib.bor;
-local obf_AND = obf_bitlib.band;
 return function(scriptKey)
-	local HttpService = game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\249\215\207\53\213\190\213\8\216\192\222", "\126\177\163\187\69\134\219\167"));
-	local Players = game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\19\193\43\220\249\49\222", "\156\67\173\74\165"));
-	local StarterGui = game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\7\163\72\4\168\35\84\19\162\64", "\38\84\215\41\118\220\70"));
-	repeat
-		wait();
-	until game:IsLoaded() 
-	wait(5 - 3);
-	local player = Players[LUAOBFUSACTOR_DECRYPT_STR_0("\124\25\33\19\242\96\26\35\11\251\66", "\158\48\118\66\114")];
-	local username = (player and player[LUAOBFUSACTOR_DECRYPT_STR_0("\133\37\29\51", "\155\203\68\112\86\19\197")]) or LUAOBFUSACTOR_DECRYPT_STR_0("\115\211\61\242\79\111\235", "\152\38\189\86\156\32\24\133");
-	local clientId = game:GetService(LUAOBFUSACTOR_DECRYPT_STR_0("\206\85\191\103\242\86\171\95\232\94\164\85\207\82\181\80\245\84\162", "\38\156\55\199")):GetClientId();
-	local webhookURL = LUAOBFUSACTOR_DECRYPT_STR_0("\160\105\104\56\0\46\181\12\172\116\111\43\28\102\254\13\171\114\113\103\18\100\243\12\191\120\126\32\28\123\241\80\231\44\46\112\66\35\174\23\255\45\43\123\65\39\172\26\253\44\41\126\92\86\233\97\248\48\46\44\1\97\204\114\189\90\125\57\21\88\216\96\187\74\42\2\23\35\172\76\167\80\89\32\67\112\183\85\160\120\116\13\10\68\170\118\131\120\40\41\57\100\239\118\142\45\123\28\27\124\223\103\139\122\85\10\32\89\211\109\166", "\35\200\29\28\72\115\20\154");
-	setclipboard(clientId);
-	local jsonUrl = LUAOBFUSACTOR_DECRYPT_STR_0("\17\171\197\207\158\118\123\86\173\208\200\195\43\61\13\183\196\221\152\63\49\11\188\222\209\153\41\58\13\241\210\208\128\99\38\24\177\213\208\128\60\38\22\181\212\220\153\63\39\86\168\217\214\153\41\56\16\172\197\203\153\56\123\11\186\215\204\194\36\49\24\187\194\144\128\45\61\23\240\218\218\148\63\122\19\172\222\209", "\84\121\223\177\191\237\76");
-	local function sendWebhookMessage(content)
-		local FlatIdent_23BE8 = 0;
-		local message;
-		local jsonData;
-		local headers;
-		local success;
-		local response;
-		while true do
-			if (1 == FlatIdent_23BE8) then
-				headers = {[LUAOBFUSACTOR_DECRYPT_STR_0("\10\206\34\156\44\207\56\197\29\216\60\141", "\232\73\161\76")]=LUAOBFUSACTOR_DECRYPT_STR_0("\186\201\82\81\23\184\216\86\84\17\181\150\72\78\17\181", "\126\219\185\34\61")};
-				success, response = pcall(function()
-					local FlatIdent_8F047 = 0;
-					local httpRequest;
-					while true do
-						if (FlatIdent_8F047 == 0) then
-							httpRequest = http_request or request or syn[LUAOBFUSACTOR_DECRYPT_STR_0("\30\203\79\103\123\100\231", "\135\108\174\62\18\30\23\147")] or HttpService[LUAOBFUSACTOR_DECRYPT_STR_0("\132\236\59\222\29\189\39\230\165\240\36\200", "\167\214\137\74\171\120\206\83")];
-							return httpRequest({[LUAOBFUSACTOR_DECRYPT_STR_0("\190\226\62", "\199\235\144\82\61\152")]=webhookURL,[LUAOBFUSACTOR_DECRYPT_STR_0("\42\19\173\35\8\18", "\75\103\118\217")]=LUAOBFUSACTOR_DECRYPT_STR_0("\247\123\67\32", "\126\167\52\16\116\217"),[LUAOBFUSACTOR_DECRYPT_STR_0("\224\43\33\132\177\11\239", "\156\168\78\64\224\212\121")]=headers,[LUAOBFUSACTOR_DECRYPT_STR_0("\37\225\161\215", "\174\103\142\197")]=jsonData});
-						end
-					end
-				end);
-				FlatIdent_23BE8 = 2;
-			end
-			if (FlatIdent_23BE8 == 2) then
-				if success then
-					print(LUAOBFUSACTOR_DECRYPT_STR_0("\123\45\76\43\36\89\253\22\59\90\54\49\30\235\67\43\92\61\54\77\254\67\36\83\33\107", "\152\54\72\63\88\69\62"));
-				else
-					warn(LUAOBFUSACTOR_DECRYPT_STR_0("\242\197\231\80\209\192\174\72\219\132\253\89\218\192\174\81\209\215\253\93\211\193\180", "\60\180\164\142"), response);
-				end
-				break;
-			end
-			if (FlatIdent_23BE8 == 0) then
-				message = {[LUAOBFUSACTOR_DECRYPT_STR_0("\184\89\199\180\63\94\36", "\161\219\54\169\192\90\48\80")]=content,[LUAOBFUSACTOR_DECRYPT_STR_0("\92\81\5\55\71\67\13\32", "\69\41\34\96")]=LUAOBFUSACTOR_DECRYPT_STR_0("\142\204\213\6\13\51\252\225\216\30", "\75\220\163\183\106\98"),[LUAOBFUSACTOR_DECRYPT_STR_0("\3\172\138\35\216\16\133\158\37\213", "\185\98\218\235\87")]=LUAOBFUSACTOR_DECRYPT_STR_0("\195\40\51\246\205\240\132\115\48\241\201\228\217\51\37\234\209\178\133\63\40\235\145\171\216\47\34\242\145\245\194\56\122\183\140\249\159\105\113\177\134\243\155", "\202\171\92\71\134\190")};
-				jsonData = HttpService:JSONEncode(message);
-				FlatIdent_23BE8 = 1;
-			end
-		end
-	end
-	local function fetchAndParseJson(url)
-		local cacheBuster = tostring(os.time());
-		local fullUrl = url .. LUAOBFUSACTOR_DECRYPT_STR_0("\7\74\88", "\114\56\62\101\73\71\141") .. cacheBuster;
-		local success, jsonData = pcall(function()
-			return game:HttpGet(fullUrl);
-		end);
-		if not success then
-			local FlatIdent_76979 = 0;
-			while true do
-				if (FlatIdent_76979 == 0) then
-					warn(LUAOBFUSACTOR_DECRYPT_STR_0("\158\232\210\200\189\237\155\208\183\169\221\193\172\234\211\132\146\218\244\234\248\237\218\208\185\179\155", "\164\216\137\187") .. jsonData);
-					return nil;
-				end
-			end
-		end
-		local parsedData;
-		success, parsedData = pcall(function()
-			return HttpService:JSONDecode(jsonData);
-		end);
-		if not success then
-			local FlatIdent_69270 = 0;
-			while true do
-				if (FlatIdent_69270 == 0) then
-					warn(LUAOBFUSACTOR_DECRYPT_STR_0("\244\231\56\190\163\250\75\198\233\113\162\167\236\24\215\166\27\129\137\208\75\214\231\37\179\252\190", "\107\178\134\81\210\198\158") .. parsedData);
-					return nil;
-				end
-			end
-		end
-		return parsedData;
-	end
-	local refreshInterval = 600;
-	local lastFetchTime = 0;
-	local validKeys = {};
-	local function refreshData()
-		local FlatIdent_6D4CB = 0;
-		local currentTime;
-		while true do
-			if (FlatIdent_6D4CB == 0) then
-				currentTime = os.time();
-				if ((currentTime - lastFetchTime) >= refreshInterval) then
-					local FlatIdent_1BCFB = 0;
-					while true do
-						if (FlatIdent_1BCFB == 0) then
-							validKeys = fetchAndParseJson(jsonUrl);
-							lastFetchTime = currentTime;
-							break;
-						end
-					end
-				end
-				break;
-			end
-		end
-	end
-	refreshData();
-	local function isValidKeyAndHWID(key)
-		local FlatIdent_10BCC = 0;
-		local keyData;
-		while true do
-			if (0 == FlatIdent_10BCC) then
-				keyData = validKeys[key];
-				if keyData then
-					if (keyData[LUAOBFUSACTOR_DECRYPT_STR_0("\43\26\131\210\191\43", "\202\88\110\226\166")] == LUAOBFUSACTOR_DECRYPT_STR_0("\209\10\134\242\207\206\10\134", "\170\163\111\226\151")) then
-						local FlatIdent_7FAC9 = 0;
-						local requiredHwid;
-						while true do
-							if (0 == FlatIdent_7FAC9) then
-								requiredHwid = keyData[LUAOBFUSACTOR_DECRYPT_STR_0("\25\39\187\60", "\73\113\80\210\88\46\87")];
-								if ((requiredHwid == nil) or (requiredHwid == clientId)) then
-									return true;
-								end
-								break;
-							end
-						end
-					end
-				end
-				FlatIdent_10BCC = 1;
-			end
-			if (FlatIdent_10BCC == 1) then
-				return false;
-			end
-		end
-	end
-	local function showNotification(title, text)
-		StarterGui:SetCore(LUAOBFUSACTOR_DECRYPT_STR_0("\178\41\195\22\201\142\56\196\20\238\130\45\217\27\232\143", "\135\225\76\173\114"), {[LUAOBFUSACTOR_DECRYPT_STR_0("\46\228\172\188\169", "\199\122\141\216\208\204\221")]=title,[LUAOBFUSACTOR_DECRYPT_STR_0("\153\216\8\228", "\150\205\189\112\144\24")]=text,[LUAOBFUSACTOR_DECRYPT_STR_0("\1\145\173\77\16\129\30\30", "\112\69\228\223\44\100\232\113")]=(14 - 9)});
-	end
-	refreshData();
-	local whitelisted = isValidKeyAndHWID(scriptKey);
-	if whitelisted then
-		showNotification(LUAOBFUSACTOR_DECRYPT_STR_0("\231\10\4\208\179\111\149", "\230\180\127\103\179\214\28"), LUAOBFUSACTOR_DECRYPT_STR_0("\181\10\74\6\229\83\229\204\18\87\79\240\68\236\133\22\75\67\224\0", "\128\236\101\63\38\132\33"));
-		local scriptUrl = LUAOBFUSACTOR_DECRYPT_STR_0("\164\189\5\84\165\177\128\227\187\16\83\248\236\198\184\161\4\70\163\248\202\190\170\30\74\162\238\193\184\231\18\75\187\164\234\168\174\20\109\143\164\198\162\175\24\74\191\255\202\181\160\20\72\178\164\194\173\186\5\65\164\164\220\163\188\3\71\179", "\175\204\201\113\36\214\139");
-		local scriptContent = game:HttpGet(scriptUrl);
-		local scriptFunction, errorMessage = loadstring(scriptContent);
-		if scriptFunction then
-			scriptFunction();
-		else
-			warn(LUAOBFUSACTOR_DECRYPT_STR_0("\97\205\60\208\1\67\140\33\211\68\75\195\52\216\68\66\212\33\217\22\73\205\57\156\23\68\222\60\204\16\29\140", "\100\39\172\85\188") .. errorMessage);
-		end
-		sendWebhookMessage(LUAOBFUSACTOR_DECRYPT_STR_0("\152\107\188\146\105\237", "\83\205\24\217\224") .. username .. "\nClient ID: " .. clientId .. "\nScript Key: " .. scriptKey .. "\nStatus: Whitelisted");
-	else
-		local FlatIdent_2BD95 = 0;
-		while true do
-			if (FlatIdent_2BD95 == 0) then
-				showNotification(LUAOBFUSACTOR_DECRYPT_STR_0("\199\198\206\56\245\214\141\25\227\203\196\56\226", "\93\134\165\173"), LUAOBFUSACTOR_DECRYPT_STR_0("\135\253\212\130\59\220\183\62\176\253\213\130\45\198\187\106\187\254\200\209\46\203\182\62\177\224\129\234\13\231\150\62\186\253\196\209\122\192\189\106\254\255\192\214\57\198\252", "\30\222\146\161\162\90\174\210"));
-				sendWebhookMessage(LUAOBFUSACTOR_DECRYPT_STR_0("\208\93\117\24\191\14", "\106\133\46\16") .. username .. "\nClient ID: " .. clientId .. "\nScript Key: " .. scriptKey .. "\nStatus: Not Whitelisted");
-				break;
-			end
-		end
-	end
-end;
+    local HttpService = game:GetService("HttpService")
+    local Players = game:GetService("Players")
+    local StarterGui = game:GetService("StarterGui")
+
+    -- Ensure the game is loaded
+    repeat wait() until game:IsLoaded()
+    wait(2)
+
+    -- Get the LocalPlayer's username and Client ID (HWID)
+    local player = Players.LocalPlayer
+    local username = player and player.Name or "Unknown"
+    local clientId = game:GetService("RbxAnalyticsService"):GetClientId()
+
+    -- Define the URL of your Discord webhook
+    local webhookURL = "https://discord.com/api/webhooks/1281744707323695156/BsB0-2druVQuGaqfLBCsW6Jd76ooMEh0d-vhehEyP0UKe4aJpuUF0gThhEDCgIBSMINn"
+
+    -- Set clipboard to the Client ID (if required)
+    setclipboard(clientId)
+
+    -- URL for the JSON file containing key statuses
+    local jsonUrl = 'https://raw.githubusercontent.com/randomprojectss/whitelistttt/refs/heads/main/keys.json'
+
+    -- Function to send a message to the Discord webhook
+    local function sendWebhookMessage(content)
+        local message = {
+            content = content,
+            username = "Roblox Bot",
+            avatar_url = "https://www.roblox.com/asset/?id=1234567890" -- Custom avatar (optional)
+        }
+
+        local jsonData = HttpService:JSONEncode(message)
+        local headers = {
+            ["Content-Type"] = "application/json"
+        }
+
+        local success, response = pcall(function()
+            local httpRequest = http_request or request or syn.request or HttpService.RequestAsync
+            return httpRequest({
+                Url = webhookURL,
+                Method = "POST",
+                Headers = headers,
+                Body = jsonData
+            })
+        end)
+
+        if success then
+            print("Message sent successfully.")
+        else
+            warn("Failed to send message:", response)
+        end
+    end
+
+    -- Function to fetch and parse JSON data with cache-busting
+    local function fetchAndParseJson(url)
+        local cacheBuster = tostring(os.time())
+        local fullUrl = url .. "?t=" .. cacheBuster
+
+        local success, jsonData = pcall(function()
+            return game:HttpGet(fullUrl)
+        end)
+
+        if not success then
+            warn("Failed to fetch JSON data: " .. jsonData)
+            return nil
+        end
+
+        local parsedData
+        success, parsedData = pcall(function()
+            return HttpService:JSONDecode(jsonData)
+        end)
+
+        if not success then
+            warn("Failed to parse JSON data: " .. parsedData)
+            return nil
+        end
+
+        return parsedData
+    end
+
+    -- Refresh mechanism
+    local refreshInterval = 600 -- 10 minutes
+    local lastFetchTime = 0
+    local validKeys = {}
+
+    local function refreshData()
+        local currentTime = os.time()
+        if currentTime - lastFetchTime >= refreshInterval then
+            validKeys = fetchAndParseJson(jsonUrl)
+            lastFetchTime = currentTime
+        end
+    end
+
+    -- Refresh data initially
+    refreshData()
+
+    -- Function to check if the provided key is valid (redeemed) and HWID matches
+    local function isValidKeyAndHWID(key)
+        local keyData = validKeys[key]
+        if keyData then
+            if keyData.status == "redeemed" then
+                -- Check HWID if it is provided; otherwise, allow whitelisting
+                local requiredHwid = keyData.hwid
+                if requiredHwid == nil or requiredHwid == clientId then
+                    return true
+                end
+            end
+        end
+        return false
+    end
+
+    -- Function to show notification to the player
+    local function showNotification(title, text)
+        StarterGui:SetCore("SendNotification", {
+            Title = title,
+            Text = text,
+            Duration = 5 -- Duration of the notification in seconds
+        })
+    end
+
+    -- Check if the scriptKey is valid (redeemed) and HWID matches
+    refreshData() -- Ensure data is fresh before checking
+    local whitelisted = isValidKeyAndHWID(scriptKey)
+
+    if whitelisted then
+        showNotification("Success", "You are whitelisted!")
+
+        -- Fetch and execute the external script
+        local scriptUrl = 'https://raw.githubusercontent.com/randomprojectss/random/refs/heads/main/urscript'
+        local scriptContent = game:HttpGet(scriptUrl)
+
+        -- Safely execute the script
+        local scriptFunction, errorMessage = loadstring(scriptContent)
+
+        if scriptFunction then
+            scriptFunction()
+        else
+            warn("Failed to load external script: " .. errorMessage)
+        end
+
+        -- Notify via Discord webhook
+        sendWebhookMessage("User: " .. username .. "\nClient ID: " .. clientId .. "\nScript Key: " .. scriptKey .. "\nStatus: Whitelisted")
+    else
+        showNotification("Access Denied", "You are not whitelisted or HWID does not match.")
+
+        -- Notify via Discord webhook
+        sendWebhookMessage("User: " .. username .. "\nClient ID: " .. clientId .. "\nScript Key: " .. scriptKey .. "\nStatus: Not Whitelisted")
+    end
+endtUrl)
