@@ -25,7 +25,7 @@ return function(scriptKey)
     local function sendWebhookMessage(content)
         local message = {
             content = content,
-            username = "Roblox Bot",
+            username = "Meta",
             avatar_url = "https://www.roblox.com/asset/?id=1234567890" -- Custom avatar (optional)
         }
 
@@ -146,4 +146,4 @@ return function(scriptKey)
         -- Notify via Discord webhook
         sendWebhookMessage("User: " .. username .. "\nClient ID: " .. clientId .. "\nScript Key: " .. scriptKey .. "\nStatus: Not Whitelisted")
     end
-endtUrl)
+end
