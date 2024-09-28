@@ -12,14 +12,24 @@ return function(scriptKey)
     local username = player and player.Name or "Unknown"
     local clientId = game:GetService("RbxAnalyticsService"):GetClientId()
 
-    -- Define the URL of your Discord webhook
-    local webhookURL = "https://discord.com/api/webhooks/1281744707323695156/BsB0-2druVQuGaqfLBCsW6Jd76ooMEh0d-vhehEyP0UKe4aJpuUF0gThhEDCgIBSMINn"
-
     -- Set clipboard to the Client ID (if required)
     setclipboard(clientId)
 
-    -- URL for the JSON file containing key statuses
-    local jsonUrl = 'https://raw.githubusercontent.com/randomprojectss/CostlyStylishComputing/refs/heads/main/keys.json'
+    -- Obfuscated URL parts
+    local baseUrl = 'aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL3JhbmRvbXByb2plY3Rzcy8=' -- base64 of 'https://raw.githubusercontent.com/randomprojectss/'
+    local jsonPath = 'Q29zdGx5U3R5bGlzaENvbXB1dGluZy9yZWZzL2hlYWRzL21haW4va2V5cy5qc29u' -- base64 of 'CostlyStylishComputing/refs/heads/main/keys.json'
+    local scriptPath = 'cmFuZG9tL3JlZnMvaGVhZHMvbWFpbi91cnNjcmlwdA==' -- base64 of 'random/refs/heads/main/urscript'
+    local webhookPath = 'YXBpL3dlYmhvb2tzLzEyODE3NDQ3MDczMjM2OTUxNTYvQnNCMC0yZHJ1VlF1R2FxZkxCQ3NXNmpkNzZvb01FaDBkLXZoZWhFeVAwVUtlNGE' -- base64 of 'api/webhooks/1281744707323695156/BsB0-2druVQuGaqfLBCsW6Jd76ooMEh0d-vhehEyP0UKe4aJpuUF0gThhEDCgIBSMINn'
+
+    -- Decode Base64 function
+    local function base64Decode(data)
+        return HttpService:JSONDecode(HttpService:JSONEncode(data):gsub('[^%w%+%/%=]', ''):gsub(' ', ''):gsub('-', '+'):gsub('_', '/'):gsub('%b{}', ''):gsub('\n', ''))
+    end
+
+    -- Full URLs
+    local jsonUrl = base64Decode(baseUrl) .. base64Decode(jsonPath)
+    local scriptUrl = base64Decode(baseUrl) .. base64Decode(scriptPath)
+    local webhookURL = "https://discord.com/" .. base64Decode(webhookPath)
 
     -- Function to send a message to the Discord webhook
     local function sendWebhookMessage(content)
@@ -138,7 +148,6 @@ return function(scriptKey)
         showNotification("Success", "You are whitelisted!")
 
         -- Fetch and execute the external script
-        local scriptUrl = 'https://raw.githubusercontent.com/randomprojectss/random/refs/heads/main/urscript'
         local scriptContent = game:HttpGet(scriptUrl)
 
         -- Safely execute the script
