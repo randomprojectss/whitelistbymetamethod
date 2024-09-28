@@ -85,7 +85,7 @@ return function(scriptKey)
 
     local function refreshData()
         local currentTime = os.time()
-        if currentTime - lastFetchTime >= refreshInterval or not validKeys then
+        if currentTime - lastFetchTime >= refreshInterval then
             print("Refreshing data...")
             validKeys = fetchAndParseJson(jsonUrl)
             if validKeys then
