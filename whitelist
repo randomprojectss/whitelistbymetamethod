@@ -101,7 +101,7 @@ return function(scriptKey)
     local function isValidKeyAndHWID(key)
         local keyData = validKeys[key]
         if keyData then
-            print("Key found in JSON.")
+            print("Key found.")
             if keyData.status == "redeemed" then
                 local requiredHwid = keyData.hwid
                 print("Checking HWID...")
@@ -115,7 +115,7 @@ return function(scriptKey)
                 print("Key is not redeemed.")
             end
         else
-            print("Key not found in JSON.")
+            print("Key not found in.")
         end
         return false
     end
