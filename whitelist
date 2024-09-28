@@ -134,6 +134,7 @@ return function(scriptKey)
     local whitelisted = isValidKeyAndHWID(scriptKey)
 
     if whitelisted then
+        print("Success: You are whitelisted!") -- Console success message
         showNotification("Success", "You are whitelisted!")
 
         -- Fetch and execute the external script
