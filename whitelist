@@ -12,12 +12,12 @@ return function(scriptKey)
     local username = player and player.Name or "Unknown"
     local clientId = game:GetService("RbxAnalyticsService"):GetClientId()
 
-    -- Decode Base64 encoded URLs
+    -- Function to decode Base64 URLs
     local function decodeBase64(data)
         return game:GetService("HttpService"):Base64Decode(data)
     end
 
-    -- Define the Base64 encoded URL of your Discord webhook
+    -- Base64 encoded URL of your Discord webhook
     local webhookURL = decodeBase64("aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTI4MTc0NDcwNzMyMzY5NTE1Ni9Cc0IwLTJkcnVWUXVHYXFmTEJDc1c2SmQ3Nm9vTUVoMGQtdmhlaEV5UDBVS2U0YUpwdVVGMGdUaGhFRENnSUJTTUlObg==")
 
     -- Set clipboard to the Client ID (if required)
@@ -123,7 +123,7 @@ return function(scriptKey)
                 print("Key is not redeemed.")
             end
         else
-            print("Key not found in.")
+            print("Key not found.")
         end
         return false
     end
