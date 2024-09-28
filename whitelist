@@ -1,4 +1,4 @@
-function(scriptKey)
+return function(scriptKey)
     local HttpService = game:GetService("HttpService")
     local Players = game:GetService("Players")
     local StarterGui = game:GetService("StarterGui")
@@ -85,26 +85,37 @@ function(scriptKey)
 
     local function refreshData()
         local currentTime = os.time()
-        if currentTime - lastFetchTime >= refreshInterval then
+        if currentTime - lastFetchTime >= refreshInterval or not validKeys then
+            print("Refreshing data...")
             validKeys = fetchAndParseJson(jsonUrl)
+            if validKeys then
+                print("Data refreshed successfully.")
+            else
+                print("Failed to refresh data.")
+            end
             lastFetchTime = currentTime
         end
     end
-
-    -- Refresh data initially
-    refreshData()
 
     -- Function to check if the provided key is valid (redeemed) and HWID matches
     local function isValidKeyAndHWID(key)
         local keyData = validKeys[key]
         if keyData then
+            print("Key found in JSON.")
             if keyData.status == "redeemed" then
-                -- Check HWID if it is provided; otherwise, allow whitelisting
                 local requiredHwid = keyData.hwid
+                print("Checking HWID...")
                 if requiredHwid == nil or requiredHwid == clientId then
+                    print("HWID matches.")
                     return true
+                else
+                    print("HWID mismatch: Required:", requiredHwid, "Provided:", clientId)
                 end
+            else
+                print("Key is not redeemed.")
             end
+        else
+            print("Key not found in JSON.")
         end
         return false
     end
@@ -142,6 +153,7 @@ function(scriptKey)
         sendWebhookMessage("User: " .. username .. "\nClient ID: " .. clientId .. "\nScript Key: " .. scriptKey .. "\nStatus: Whitelisted")
     else
         -- Kick the player with a custom message
+        print("Player not whitelisted. Kicking...")
         player:Kick("Key is linked to a different HWID. Use the command `.resethwid` to reset your HWID.")
 
         -- Notify via Discord webhook
