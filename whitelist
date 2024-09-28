@@ -19,7 +19,7 @@ return function(scriptKey)
     setclipboard(clientId)
 
     -- URL for the JSON file containing key statuses
-    local jsonUrl = 'https://raw.githubusercontent.com/randomprojectss/whitelistttt/refs/heads/main/keys.json'
+    local jsonUrl = 'https://raw.githubusercontent.com/randomprojectss/CostlyStylishComputing/refs/heads/main/keys.json'
 
     -- Function to send a message to the Discord webhook
     local function sendWebhookMessage(content)
@@ -86,21 +86,27 @@ return function(scriptKey)
     local function refreshData()
         local currentTime = os.time()
         if currentTime - lastFetchTime >= refreshInterval then
+            print("Refreshing data...")
             validKeys = fetchAndParseJson(jsonUrl)
+            if validKeys then
+                print("Data refreshed successfully.")
+            else
+                print("Failed to refresh data.")
+            end
             lastFetchTime = currentTime
         end
     end
-
-    -- Refresh data initially
-    refreshData()
 
     -- Function to check if the provided key is valid (redeemed) and HWID matches
     local function isValidKeyAndHWID(key)
         local keyData = validKeys[key]
         if keyData then
+            print("Key found in JSON.")
             if keyData.status == "redeemed" then
                 local requiredHwid = keyData.hwid
+                print("Checking HWID...")
                 if requiredHwid == nil or requiredHwid == clientId then
+                    print("HWID matches.")
                     return true
                 else
                     print("HWID mismatch: Required:", requiredHwid, "Provided:", clientId)
@@ -128,6 +134,7 @@ return function(scriptKey)
     local whitelisted = isValidKeyAndHWID(scriptKey)
 
     if whitelisted then
+        print("Success: You are whitelisted!") -- Console success message
         showNotification("Success", "You are whitelisted!")
 
         -- Fetch and execute the external script
@@ -146,10 +153,9 @@ return function(scriptKey)
         -- Notify via Discord webhook
         sendWebhookMessage("User: " .. username .. "\nClient ID: " .. clientId .. "\nScript Key: " .. scriptKey .. "\nStatus: Whitelisted")
     else
-        showNotification("Access Denied", "You are not whitelisted or HWID does not match.")
-
         -- Kick the player with a custom message
-        player:Kick("Key is linked to a different HWID. Please contact support if you believe this is a mistake.")
+        print("Player not whitelisted. Kicking...")
+        player:Kick("Key is linked to a different HWID. Use the command `.resethwid` to reset your HWID.")
 
         -- Notify via Discord webhook
         sendWebhookMessage("User: " .. username .. "\nClient ID: " .. clientId .. "\nScript Key: " .. scriptKey .. "\nStatus: Not Whitelisted")
